@@ -22,7 +22,7 @@ clean :
 	@$(RM) $(OBJ)
 
 fclean : clean 
-	@$(RM) $(NAME)
+	@$(RM) $(NAME) push_swap
 
 
 re : fclean all
