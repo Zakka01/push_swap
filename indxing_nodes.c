@@ -6,7 +6,7 @@
 /*   By: zahrabar <zahrabar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:05:56 by zahrabar          #+#    #+#             */
-/*   Updated: 2026/01/08 20:42:58 by zahrabar         ###   ########.fr       */
+/*   Updated: 2026/01/09 18:19:51 by zahrabar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,62 +93,16 @@ void index_nodes(n_list **a_stack, int size)
     }
 }
 
-void chunks_algo(n_list **a_stack, n_list **b_stack)
+void range_algo(n_list **a_stack, n_list **b_stack)
 {
     n_list *current;
     int size;
-    int idx;
-    int pos;
     int i;
-    int times;
 
     size = list_size(*a_stack);
     index_nodes(a_stack, size);
-
-    idx = 0;
-    while (*a_stack != NULL)
-    {
-        i = 0;
-        current = *a_stack;
-        while (current)
-        {
-            if (current->index == idx)
-            {
-                pos = i;
-                break;
-            }
-            i++;
-            current = current->next;
-        }
-        size = list_size(*a_stack);
-        if (pos == 0)
-            push(a_stack, b_stack, 'b');
-        else if (pos < size / 2)
-        {
-            while (pos > 0)
-            {
-                rotate(a_stack, 'a');
-                pos--;
-            }
-            push(a_stack, b_stack, 'b');
-        }
-        else
-        {
-            times = size - pos;
-            while (times > 0)
-            {
-                rev_rotate(a_stack, 'a');
-                times--;
-            }
-            push(a_stack, b_stack, 'b');
-        }
-        if (*a_stack == NULL)
-            break;
-        idx++;
-    }
-
-    while (*b_stack)
-    {
-        push(b_stack, a_stack, 'a');
-    }
+    if (size > 5 && size <= 10)
+        hc_sort(a_stack, b_stack, size);
+    else
+        get_chunks(a_stack, b_stack, size);
 }
