@@ -6,7 +6,7 @@
 /*   By: zahrabar <zahrabar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:05:56 by zahrabar          #+#    #+#             */
-/*   Updated: 2026/01/11 20:58:37 by zahrabar         ###   ########.fr       */
+/*   Updated: 2026/01/12 00:00:38 by zahrabar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,3 @@ void index_nodes(n_list **a_stack, int size)
         idx++;
     }
 }
-

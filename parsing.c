@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_utils.c                                       :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zahrabar <zahrabar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:06:06 by zahrabar          #+#    #+#             */
-/*   Updated: 2026/01/07 19:46:35 by zahrabar         ###   ########.fr       */
+/*   Updated: 2026/01/12 00:00:25 by zahrabar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int    parse_create_list(char *arg, n_list **a_head)
     char    **numbers;
     n_list  *node;
     int     error;
-
+    
     numbers = ft_split(arg);
     if (!numbers)
         return (0);
