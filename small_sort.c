@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_sizes.c                                     :+:      :+:    :+:   */
+/*   small_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zahrabar <zahrabar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:03:51 by zahrabar          #+#    #+#             */
-/*   Updated: 2026/01/08 15:16:09 by zahrabar         ###   ########.fr       */
+/*   Updated: 2026/01/11 21:14:19 by zahrabar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,25 +74,23 @@ void find_push_min(n_list **a_stack, n_list **b_stack)
         rotate(a_stack, 'a');
         index--;
     }
-    push(a_stack, b_stack, 'b');
+    if (!is_sorted(a_stack))
+        push(a_stack, b_stack, 'b');
 }
 
 void size_of_f(n_list **a_stack, n_list **b_stack, int size)
 {
-    if (size == 4)
+    int pushes;
+
+    pushes = size - 3;
+    while (pushes > 0)
     {
         find_push_min(a_stack, b_stack);
-        size_of_three(a_stack);
-        push(b_stack, a_stack, 'a');
+        pushes--;
     }
-    else if (size == 5)
-    {
-        find_push_min(a_stack, b_stack);
-        find_push_min(a_stack, b_stack);
-        size_of_three(a_stack);
+    size_of_three(a_stack);
+    while (*b_stack)
         push(b_stack, a_stack, 'a');
-        push(b_stack, a_stack, 'a');
-    }
 }
 
 // handle the sorting based on the size of the list
@@ -110,5 +108,5 @@ void handle_list_size(n_list **a_stack, n_list **b_stack)
     else if ((size == 4 || size == 5) && !is_sorted(a_stack))
         size_of_f(a_stack, b_stack, size);
     else if (size > 5 && !is_sorted(a_stack))
-        chunks_algo(a_stack, b_stack);
+        chunks_sort(a_stack, b_stack, size);
 }

@@ -6,7 +6,7 @@
 /*   By: zahrabar <zahrabar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/01 18:01:09 by zahrabar          #+#    #+#             */
-/*   Updated: 2026/01/09 18:20:03 by zahrabar         ###   ########.fr       */
+/*   Updated: 2026/01/11 21:15:18 by zahrabar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,10 @@ void    rev_rotate_both(n_list  **a_stack, n_list   **b_stack);
 void    handle_list_size(n_list **a_stack, n_list **b_stack);
 int     is_sorted(n_list    **a_stack);
 
-// sorting algo
-void    range_algo(n_list **a_stack, n_list **b_stack);
-void    hc_sort(n_list **a_stack, n_list **b_stack, int size)
+void    index_nodes(n_list **a_stack, int size);
 
-
-
-
+// big sorting algo
+void    chunks_sort(n_list **a_stack, n_list **b_stack, int size);
 
 
 

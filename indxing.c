@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   indxing_nodes.c                                    :+:      :+:    :+:   */
+/*   indxing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zahrabar <zahrabar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:05:56 by zahrabar          #+#    #+#             */
-/*   Updated: 2026/01/09 18:19:51 by zahrabar         ###   ########.fr       */
+/*   Updated: 2026/01/11 20:58:37 by zahrabar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,48 +24,33 @@ void initial_all_nodes(n_list **a_stack)
     }
 }
 
-int init_min(n_list **a_stack)
+int find_min(n_list **a_stack)
 {
     n_list *current;
     int min;
+    int pos_min;
+    int i;
+    int found;
 
-    min = 0;
     current = *a_stack;
+    i = 0;
+    found = 0;
     while (current)
     {
         if (current->index == -1)
         {
-            min = current->data;
-            break;
-        }
-        current = current->next;
-    }
-    return (min);
-}
-
-int find_min(n_list **a_stack)
-{
-    n_list *current;
-    int pos_min;
-    int i;
-    int min;
-
-    current = *a_stack;
-    i = 0;
-    min = init_min(a_stack);
-    while (current)
-    {
-        if (min >= current->data && current->index == -1)
-        {
-            min = current->data;
-            pos_min = i;
+            if (!found || current->data < min)
+            {
+                min = current->data;
+                pos_min = i;
+                found = 1;
+            }
         }
         current = current->next;
         i++;
     }
     return (pos_min);
 }
-
 
 void index_nodes(n_list **a_stack, int size)
 {
@@ -85,7 +70,10 @@ void index_nodes(n_list **a_stack, int size)
         while (i <= pos_min)
         {
             if (i == pos_min)
+            {
                 current->index = idx;
+                break;
+            }
             current = current->next;
             i++;
         }
@@ -93,16 +81,3 @@ void index_nodes(n_list **a_stack, int size)
     }
 }
 
-void range_algo(n_list **a_stack, n_list **b_stack)
-{
-    n_list *current;
-    int size;
-    int i;
-
-    size = list_size(*a_stack);
-    index_nodes(a_stack, size);
-    if (size > 5 && size <= 10)
-        hc_sort(a_stack, b_stack, size);
-    else
-        get_chunks(a_stack, b_stack, size);
-}
