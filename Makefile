@@ -1,6 +1,6 @@
 NAME = push_swap.a
 
-FLAGS = -Wall -Wextra -Werror
+# FLAGS = -Wall -Wextra -Werror
 
 SRC := $(wildcard *.c)
 

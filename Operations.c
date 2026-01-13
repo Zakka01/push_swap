@@ -6,7 +6,7 @@
 /*   By: zahrabar <zahrabar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:03:43 by zahrabar          #+#    #+#             */
-/*   Updated: 2026/01/12 00:00:32 by zahrabar         ###   ########.fr       */
+/*   Updated: 2026/01/12 15:42:20 by zahrabar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,11 @@ void    push(n_list **src_stack, n_list **dst_stack, char w_stack)
     n_list *src_head;
     n_list *dst_head;
 
+    if (!src_stack || !*src_stack)
+        return;
+
     src_head = *src_stack;
     dst_head = *dst_stack;
-
     *src_stack = src_head->next;
     src_head->next = dst_head;
     *dst_stack = src_head;
@@ -60,8 +62,9 @@ void    rotate(n_list **h_stack, char w_stack)
 {
     n_list *head;
 
+    if (!h_stack || !*h_stack || !(*h_stack)->next)
+        return;
     head = *h_stack;
-
     *h_stack = head->next;
     head->next = NULL;
     add_to_back(h_stack, head);
@@ -84,6 +87,8 @@ void    rev_rotate(n_list **h_stack, char w_stack)
     n_list *current;
     n_list *prev;
 
+    if (!h_stack || !*h_stack || !(*h_stack)->next)
+        return;
     current = *h_stack;
     while (current->next)
     {

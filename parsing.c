@@ -6,7 +6,7 @@
 /*   By: zahrabar <zahrabar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:06:06 by zahrabar          #+#    #+#             */
-/*   Updated: 2026/01/12 00:00:25 by zahrabar         ###   ########.fr       */
+/*   Updated: 2026/01/12 15:44:05 by zahrabar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,14 @@ void add_to_back(n_list **list, n_list *node)
 {
     n_list *tmp;
 
+    if (!list || !node)
+        return;
+    node->next = NULL;
     if (!*list)
     {
         *list = node;
         return;
     }
-
     tmp = *list;
     while (tmp->next)
         tmp = tmp->next;
