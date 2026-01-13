@@ -1,6 +1,7 @@
-NAME = push_swap.a
+NAME = push_swap
 
 # FLAGS = -Wall -Wextra -Werror
+# FLAGS = -fsanitize=address
 
 SRC := $(wildcard *.c)
 
@@ -13,7 +14,7 @@ RM = rm -f
 all: $(NAME)
 
 $(NAME) : $(OBJ)
-	@$(AR) $(NAME) $(OBJ) 
+	@cc $(FLAGS) $(OBJ) -o $(NAME)
 
 %.o : %.c push_swap.h
 	@cc $(FLAGS) -c $< -o $@
@@ -24,11 +25,4 @@ clean :
 fclean : clean 
 	@$(RM) $(NAME) push_swap
 
-
 re : fclean all
-
-
-
-# test role
-test :	$(OBJ) $(NAME)
-	@cc $(FLAGS) push_swap.c $(NAME) -o push_swap

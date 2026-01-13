@@ -6,20 +6,18 @@
 /*   By: zahrabar <zahrabar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:03:51 by zahrabar          #+#    #+#             */
-/*   Updated: 2026/01/11 21:14:19 by zahrabar         ###   ########.fr       */
+/*   Updated: 2026/01/13 20:32:00 by zahrabar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// if size of the list is 2, just swap if not sorted
 void size_of_two(n_list **a_stack)
 {
     if ((*a_stack)->data > (*a_stack)->next->data)
         swap(a_stack, 'a');
 }
 
-// if size of the list is 3 , compare and sort if not sorted
 void size_of_three(n_list **a_stack)
 {
     n_list *first;
@@ -93,7 +91,6 @@ void size_of_f(n_list **a_stack, n_list **b_stack, int size)
         push(b_stack, a_stack, 'a');
 }
 
-// handle the sorting based on the size of the list
 void handle_list_size(n_list **a_stack, n_list **b_stack)
 {
     int size;

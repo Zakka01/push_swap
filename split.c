@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   split_input.c                                      :+:      :+:    :+:   */
+/*   split.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zahrabar <zahrabar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:05:53 by zahrabar          #+#    #+#             */
-/*   Updated: 2026/01/09 20:45:52 by zahrabar         ###   ########.fr       */
+/*   Updated: 2026/01/13 19:15:55 by zahrabar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,15 @@ int count_words(char *s)
 }
 
 // free heap to prevent memory leaks
-void	free_all_space(char **arr, int j)
+void	free_all_space(char **arr)
 {
-	while (j > 0)
+    int j;
+
+    j = 0;
+	while (arr[j])
 	{
-		j--;
 		free(arr[j]);
+        j++;
 	}
 	free(arr);
 }

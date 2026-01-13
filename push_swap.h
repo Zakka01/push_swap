@@ -6,7 +6,7 @@
 /*   By: zahrabar <zahrabar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/01 18:01:09 by zahrabar          #+#    #+#             */
-/*   Updated: 2026/01/12 00:00:16 by zahrabar         ###   ########.fr       */
+/*   Updated: 2026/01/13 19:16:58 by zahrabar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int     list_size(n_list *list);
 // validation of input
 char    **ft_split(char *str);
 int     ft_atoi(char *str, int *error);
-void	free_all_space(char **arr, int j);
+void	free_all_space(char **arr);
 int     parse_create_list(char *arg, n_list **a_head);
 int     check_dup(n_list *a_head);
 // moves prototype

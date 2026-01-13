@@ -6,7 +6,7 @@
 /*   By: zahrabar <zahrabar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:06:06 by zahrabar          #+#    #+#             */
-/*   Updated: 2026/01/12 15:44:05 by zahrabar         ###   ########.fr       */
+/*   Updated: 2026/01/13 19:17:03 by zahrabar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ n_list *add_new_node(int content)
     return (new_node);
 }
 
-// add a node to the end of a list
 void add_to_back(n_list **list, n_list *node)
 {
     n_list *tmp;
@@ -45,7 +44,6 @@ void add_to_back(n_list **list, n_list *node)
     tmp->next = node;
 }
 
-// add a node to the front
 void add_to_front(n_list **list, n_list *node)
 {
     if (!list || !node)
@@ -54,7 +52,6 @@ void add_to_front(n_list **list, n_list *node)
     *list = node;
 }
 
-// this fuction count the size of a linked-list
 int list_size(n_list *list)
 {
     int size;
@@ -69,28 +66,27 @@ int list_size(n_list *list)
     return (size);
 }
 
-// parsing the input and create a list contains node with its data
 int    parse_create_list(char *arg, n_list **a_head)
 {
-    int     j;
-    int     number;
-    char    **numbers;
     n_list  *node;
+    char    **numbers;
+    int     number;
     int     error;
+    int     j;
     
     numbers = ft_split(arg);
     if (!numbers)
-        return (0);
+        return (free_all_space(numbers), 0);
     j = 0;
     while (numbers[j])
     {
         number = ft_atoi(numbers[j], &error);
         if (error == -1)
-            return (0);
+            return (free_all_space(numbers), 0);
         node = add_new_node(number);
         add_to_back(a_head, node);
         j++;
     }
-    free_all_space(numbers, j);
+    free_all_space(numbers);
     return (1);
 }

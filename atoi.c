@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert_int.c                                      :+:      :+:    :+:   */
+/*   atoi.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zahrabar <zahrabar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:03:37 by zahrabar          #+#    #+#             */
-/*   Updated: 2026/01/07 21:55:50 by zahrabar         ###   ########.fr       */
+/*   Updated: 2026/01/13 18:35:55 by zahrabar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,15 @@ int ft_atoi(char *str, int *error)
 	i = 0;
 	res = 0;
 	sign = 1;
-	if (((str[i] == '-' || str[i] == '+') && ft_isdigit(str[i + 1])) || ft_isdigit(str[i]))
+	if (((str[i] == '+' || str[i] == '-') && ft_isdigit(str[i + 1])) || ft_isdigit(str[i]))
 	{
 		if (str[i] == '-')
 		{
 			sign = -1;
 			i++;
 		}
+		else if (str[i] == '+')
+			i++;	
 	}
 	else
 	{
