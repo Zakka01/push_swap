@@ -6,7 +6,7 @@
 /*   By: zahrabar <zahrabar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:05:53 by zahrabar          #+#    #+#             */
-/*   Updated: 2026/01/13 20:45:59 by zahrabar         ###   ########.fr       */
+/*   Updated: 2026/01/14 18:20:23 by zahrabar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,19 @@ char **ft_split(char *str)
     char **arr = NULL;
     int len;
 
+    if (!str || !*str)
+        return (NULL);
     len = count_words(str);
+    if (len == 0)
+        return (NULL);
     arr = malloc((len + 1) * sizeof(char *));
     if (!arr)
         return (NULL);
-
     if (!fill_words(str, arr, len))
+    {
+        free_all_space(arr);
         return (NULL);
+    }
+    arr[len] = NULL; 
     return (arr);
 }

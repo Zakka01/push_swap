@@ -6,7 +6,7 @@
 /*   By: zahrabar <zahrabar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:06:06 by zahrabar          #+#    #+#             */
-/*   Updated: 2026/01/13 20:47:40 by zahrabar         ###   ########.fr       */
+/*   Updated: 2026/01/14 18:16:56 by zahrabar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,13 @@ int    parse_create_list(char *arg, n_list **a_head)
     int     j;
     
     numbers = ft_split(arg);
-    if (!numbers)
-        return (free_all_space(numbers), 0);
+    if (!numbers || !numbers[0])
+        return (0);
     j = 0;
     while (numbers[j])
     {
+        if (!numbers[j])
+            return (free_all_space(numbers), 0);
         number = ft_atoi(numbers[j], &error);
         if (error == -1)
             return (free_all_space(numbers), 0);

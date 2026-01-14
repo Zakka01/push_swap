@@ -1,7 +1,7 @@
 NAME = push_swap
 
 # FLAGS = -Wall -Wextra -Werror
-# FLAGS = -fsanitize=address
+FLAGS = -fsanitize=address
 
 SRC := $(wildcard *.c)
 

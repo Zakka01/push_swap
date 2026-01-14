@@ -6,7 +6,7 @@
 /*   By: zahrabar <zahrabar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:03:37 by zahrabar          #+#    #+#             */
-/*   Updated: 2026/01/13 20:47:55 by zahrabar         ###   ########.fr       */
+/*   Updated: 2026/01/14 18:10:00 by zahrabar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,11 @@ int ft_atoi(char *str, int *error)
 	i = 0;
 	res = 0;
 	sign = 1;
+	if (!str || !*str)
+	{
+		*error = -1;
+		return (0);
+	}
 	if (((str[i] == '+' || str[i] == '-') && ft_isdigit(str[i + 1])) || ft_isdigit(str[i]))
 	{
 		if (str[i] == '-')
