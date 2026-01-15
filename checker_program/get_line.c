@@ -6,7 +6,7 @@
 /*   By: zahrabar <zahrabar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 19:32:14 by zahrabar          #+#    #+#             */
-/*   Updated: 2026/01/14 23:34:55 by zahrabar         ###   ########.fr       */
+/*   Updated: 2026/01/15 17:19:45 by zahrabar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ char    *read_join(char *buffer, char *save, int fd)
     char *tmp;
 
     n = 1;
-    while (!(nl_exist(save)) && n > 0)
+    while (!(nl_found(save)) && n > 0)
     {
         n = read(fd, buffer, BUFFER_SIZE);
         if (n < 0)

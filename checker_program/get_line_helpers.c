@@ -6,7 +6,7 @@
 /*   By: zahrabar <zahrabar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 20:54:57 by zahrabar          #+#    #+#             */
-/*   Updated: 2026/01/14 23:35:24 by zahrabar         ###   ########.fr       */
+/*   Updated: 2026/01/15 15:23:16 by zahrabar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ char	*flush_leftover(char **saved_buf)
 	return (line);
 }
 
-int	nl_exist(char *buffer)
+int	nl_found(char *buffer)
 {
     int i;
 

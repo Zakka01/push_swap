@@ -6,7 +6,7 @@
 /*   By: zahrabar <zahrabar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 19:12:19 by zahrabar          #+#    #+#             */
-/*   Updated: 2026/01/14 23:47:05 by zahrabar         ###   ########.fr       */
+/*   Updated: 2026/01/15 18:27:57 by zahrabar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,21 +39,28 @@ int     ft_atoi(char *str, int *error);
 void	free_all_space(char **arr);
 int     parse_create_list(char *arg, n_list **a_head);
 int     check_dup(n_list *a_head);
-void    swap(n_list **h_stack, char w_stack);
+// moves
+void    swap(n_list **h_stack);
 void    swap_both(n_list **a_stack, n_list **b_stack);
-void    push(n_list **src_stack, n_list **dst_stack, char w_stack);
-void    rotate(n_list **h_stack, char w_stack);
+void    push(n_list **src_stack, n_list **dst_stack);
+void    rotate(n_list **h_stack);
 void    rotate_both(n_list **a_stack, n_list **b_stack);
-void    rev_rotate(n_list **h_stack, char w_stack);
+void    rev_rotate(n_list **h_stack);
 void    rev_rotate_both(n_list  **a_stack, n_list   **b_stack);
 int     is_sorted(n_list    **a_stack);
 
+
+// get line
+char    *get_line(int fd);
 // get line helpers
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strdup(const char *s1);
 int     ft_strlen(const char *s);
 char	*flush_leftover(char **saved_buf);
 int     nl_found(char *buffer);
+
+int     validate_line(char *line);
+int is_move(char *str1, char *str2);
 
 
 
