@@ -6,7 +6,7 @@
 /*   By: zahrabar <zahrabar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 20:54:57 by zahrabar          #+#    #+#             */
-/*   Updated: 2026/01/15 20:14:05 by zahrabar         ###   ########.fr       */
+/*   Updated: 2026/01/18 00:11:18 by zahrabar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,16 +83,16 @@ char	*flush_leftover(char **saved_buf)
 
 int	nl_found(char *buffer)
 {
-    int i;
+	int	i;
 
-    i = 0;
+	i = 0;
 	if (!buffer)
 		return (0);
-    while (buffer[i])
-    {
-        if (buffer[i] == '\n')
-            return (1);
-        i++;
-    }
-    return (0);
+	while (buffer[i])
+	{
+		if (buffer[i] == '\n')
+			return (1);
+		i++;
+	}
+	return (0);
 }

@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   duplicates.c                                       :+:      :+:    :+:   */
+/*   Operations2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zahrabar <zahrabar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/14 19:17:32 by zahrabar          #+#    #+#             */
-/*   Updated: 2026/01/18 00:18:18 by zahrabar         ###   ########.fr       */
+/*   Created: 2026/01/18 00:13:33 by zahrabar          #+#    #+#             */
+/*   Updated: 2026/01/18 00:14:01 by zahrabar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
-int	check_dup(t_list *a_head)
+void	rev_rotate(t_list **h_stack)
 {
-	t_list	*this_num;
-	t_list	*next_num;
+	t_list	*current;
+	t_list	*prev;
 
-	if (!a_head)
-		return (0);
-	this_num = a_head;
-	while (this_num)
+	if (!h_stack || !*h_stack || !(*h_stack)->next)
+		return ;
+	current = *h_stack;
+	while (current->next)
 	{
-		next_num = this_num->next;
-		while (next_num)
-		{
-			if (this_num->data == next_num->data)
-				return (0);
-			next_num = next_num->next;
-		}
-		this_num = this_num->next;
+		prev = current;
+		current = current->next;
 	}
-	return (1);
+	prev->next = NULL;
+	add_to_front(h_stack, current);
+}
+
+void	rev_rotate_both(t_list **a_stack, t_list **b_stack)
+{
+	rev_rotate(a_stack);
+	rev_rotate(b_stack);
 }

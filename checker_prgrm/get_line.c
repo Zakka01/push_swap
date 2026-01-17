@@ -6,7 +6,7 @@
 /*   By: zahrabar <zahrabar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 19:32:14 by zahrabar          #+#    #+#             */
-/*   Updated: 2026/01/15 20:12:43 by zahrabar         ###   ########.fr       */
+/*   Updated: 2026/01/18 00:10:55 by zahrabar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	*after_nl(char *buf)
 		return (NULL);
 	while (buf[i] && buf[i] != '\n')
 		i++;
-	if (buf[i] == '\n')				
+	if (buf[i] == '\n')
 		i++;
 	buffer = malloc(ft_strlen(buf) - i + 1);
 	if (!buffer)
@@ -82,57 +82,57 @@ char	*ex_line(char **save)
 		return (NULL);
 	}
 	*save = new_saved;
-	free (tmp);
+	free(tmp);
 	return (line);
 }
 
-char    *read_join(char *buffer, char *save, int fd)
+char	*read_join(char *buffer, char *save, int fd)
 {
-    int n;
-    char *tmp;
+	int		n;
+	char	*tmp;
 
-    n = 1;
-    while (!(nl_found(save)) && n > 0)
-    {
-        n = read(fd, buffer, BUFFER_SIZE);
-        if (n < 0)
+	n = 1;
+	while (!(nl_found(save)) && n > 0)
+	{
+		n = read(fd, buffer, BUFFER_SIZE);
+		if (n < 0)
 		{
 			free(save);
 			save = NULL;
 			return (NULL);
 		}
-        buffer[n] = '\0';
-        tmp = save;
-        save = ft_strjoin(save, buffer);
-        if (!save)
-        {
-            free(tmp);
-            return (NULL);
-        }
-        free(tmp);
-    }
-    return (save);
+		buffer[n] = '\0';
+		tmp = save;
+		save = ft_strjoin(save, buffer);
+		if (!save)
+		{
+			free(tmp);
+			return (NULL);
+		}
+		free(tmp);
+	}
+	return (save);
 }
 
-char    *get_line(int fd)
+char	*get_line(int fd)
 {
-    char        *buffer;
-    static char *save;
-    char        *line;
+	char		*buffer;
+	static char	*save;
+	char		*line;
 
-    if (fd < 0)
-        return (NULL);
-    buffer = malloc(BUFFER_SIZE + 1);
-    if (!buffer)
-        return (NULL);
-    save = read_join(buffer, save, fd);
-    if (!save || !save[0])
+	if (fd < 0)
+		return (NULL);
+	buffer = malloc(BUFFER_SIZE + 1);
+	if (!buffer)
+		return (NULL);
+	save = read_join(buffer, save, fd);
+	if (!save || !save[0])
 	{
 		free(save);
 		save = NULL;
 		return (NULL);
 	}
-    line = ex_line(&save);
+	line = ex_line(&save);
 	if (!line)
 	{
 		free(save);

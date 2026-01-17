@@ -6,89 +6,94 @@
 /*   By: zahrabar <zahrabar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:05:53 by zahrabar          #+#    #+#             */
-/*   Updated: 2026/01/14 18:20:23 by zahrabar         ###   ########.fr       */
+/*   Updated: 2026/01/17 23:46:13 by zahrabar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int is_space(char c)
+int	is_space(char c)
 {
-    return (c == 32 || (c >= 9 && c <= 13));
+	return (c == 32 || (c >= 9 && c <= 13));
 }
 
-int count_words(char *s)
+int	count_words(char *s)
 {
-    int i = 0;
-    int count = 0;
-    while (s[i])
-    {
-        if (!is_space(s[i]) && (is_space(s[i + 1]) || s[i + 1] == '\0'))
-            count++;
-        i++;
-    }
-    return (count);
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (s[i])
+	{
+		if (!is_space(s[i]) && (is_space(s[i + 1]) || s[i + 1] == '\0'))
+			count++;
+		i++;
+	}
+	return (count);
 }
 
 void	free_all_space(char **arr)
 {
-    int j;
+	int	j;
 
-    j = 0;
+	j = 0;
 	while (arr[j])
 	{
 		free(arr[j]);
-        j++;
+		j++;
 	}
 	free(arr);
 }
 
-int fill_words(char *s, char **arr, int len)
+int	fill_words(char *s, char **arr, int len)
 {
-    int i = 0;
-    int j = 0;
-    int start = 0;
-    int end = 0;
-    char *word;
+	int		i;
+	int		j;
+	int		start;
+	int		end;
 
-    while (i < len)
-    {
-        while (s[start] && is_space(s[start]))
-            start++;
-        end = start;
-        while (s[end] && !is_space(s[end]))
-            end++;
-        word = malloc(end - start + 1);
-        if (!word)
-            return (0);
-        j = 0;
-        while (start < end)
-            word[j++] = s[start++];
-        word[j] = '\0';
-        arr[i] = word;
-        i++;
-    }
-    return (1);
+	i = 0;
+	start = 0;
+	end = 0;
+	while (i < len)
+	{
+		while (s[start] && is_space(s[start]))
+			start++;
+		end = start;
+		while (s[end] && !is_space(s[end]))
+			end++;
+		arr[i] = malloc(end - start + 1);
+		if (!arr[i])
+			return (0);
+		j = 0;
+		while (start < end)
+			arr[i][j++] = s[start++];
+		arr[i][j] = '\0';
+		i++;
+	}
+	return (1);
 }
 
-char **ft_split(char *str)
+char	**ft_split(char *str)
 {
-    char **arr = NULL;
-    int len;
+	char	**arr;
+	int		len;
 
-    if (!str || !*str)
-        return (NULL);
-    len = count_words(str);
-    if (len == 0)
-        return (NULL);
-    arr = malloc((len + 1) * sizeof(char *));
-    if (!arr)
-        return (NULL);
-    if (!fill_words(str, arr, len))
-    {
-        free_all_space(arr);
-        return (NULL);
-    }
-    arr[len] = NULL; 
-    return (arr);
+	arr = NULL;
+	if (!str || !*str)
+		return (NULL);
+	len = count_words(str);
+	if (len == 0)
+		return (NULL);
+	arr = malloc((len + 1) * sizeof(char *));
+	if (!arr)
+		return (NULL);
+	if (!fill_words(str, arr, len))
+	{
+		free_all_space(arr);
+		return (NULL);
+	}
+	arr[len] = NULL;
+	return (arr);
 }

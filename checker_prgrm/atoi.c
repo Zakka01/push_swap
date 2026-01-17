@@ -6,18 +6,18 @@
 /*   By: zahrabar <zahrabar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 19:18:03 by zahrabar          #+#    #+#             */
-/*   Updated: 2026/01/14 19:18:24 by zahrabar         ###   ########.fr       */
+/*   Updated: 2026/01/18 00:06:33 by zahrabar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-int ft_isdigit(char c)
+int	ft_isdigit(char c)
 {
 	return (c >= '0' && c <= '9');
 }
 
-static int ov_check(unsigned long res, int digit, int sign)
+int	ov_check(unsigned long res, int digit, int sign)
 {
 	if (sign == 1)
 	{
@@ -32,7 +32,7 @@ static int ov_check(unsigned long res, int digit, int sign)
 	return (1);
 }
 
-int get_res(char *str, int i, int *error, int sign)
+int	get_res(char *str, int i, int *error, int sign)
 {
 	int				digit;
 	unsigned long	res;
@@ -43,13 +43,13 @@ int get_res(char *str, int i, int *error, int sign)
 		if (!ft_isdigit(str[i]))
 		{
 			*error = -1;
-			return (0);	
+			return (0);
 		}
 		digit = str[i] - '0';
 		if (!ov_check(res, digit, sign))
 		{
 			*error = -1;
-			return (0);	
+			return (0);
 		}
 		res = res * 10 + digit;
 		i++;
@@ -57,11 +57,38 @@ int get_res(char *str, int i, int *error, int sign)
 	return (res);
 }
 
-int ft_atoi(char *str, int *error)
+int	parse_sign(char *str, int *i, int *error)
 {
-	int i;
-	unsigned long res;
-	int sign;
+	int	sign;
+	int	idx;
+
+	idx = *i;
+	sign = 1;
+	if (((str[idx] == '+' || str[idx] == '-') && ft_isdigit(str[idx + 1]))
+		|| ft_isdigit(str[idx]))
+	{
+		if (str[idx] == '-')
+		{
+			sign = -1;
+			idx++;
+		}
+		else if (str[idx] == '+')
+			idx++;
+	}
+	else
+	{
+		*error = -1;
+		return (0);
+	}
+	*i = idx;
+	return (sign);
+}
+
+int	ft_atoi(char *str, int *error)
+{
+	int				i;
+	unsigned long	res;
+	int				sign;
 
 	i = 0;
 	res = 0;
@@ -71,21 +98,9 @@ int ft_atoi(char *str, int *error)
 		*error = -1;
 		return (0);
 	}
-	if (((str[i] == '+' || str[i] == '-') && ft_isdigit(str[i + 1])) || ft_isdigit(str[i]))
-	{
-		if (str[i] == '-')
-		{
-			sign = -1;
-			i++;
-		}
-		else if (str[i] == '+')
-			i++;	
-	}
-	else
-	{
-		*error = -1;
+	parse_sign(str, &i, error);
+	if (*error == -1)
 		return (0);
-	}
 	res = get_res(str, i, error, sign);
 	return ((res * sign));
 }
