@@ -6,11 +6,11 @@
 /*   By: zahrabar <zahrabar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/18 00:13:33 by zahrabar          #+#    #+#             */
-/*   Updated: 2026/01/18 00:14:01 by zahrabar         ###   ########.fr       */
+/*   Updated: 2026/01/18 17:27:24 by zahrabar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 void	rev_rotate(t_list **h_stack)
 {
