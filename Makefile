@@ -1,6 +1,6 @@
 CC = cc
-# CFLAGS = -Wall -Wextra -Werror
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address -fsanitize=undefined
+
+CFLAGS = -Wall -Wextra -Werror
 
 PUSH_NAME = push_swap
 BONUS_NAME = checker
