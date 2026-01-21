@@ -5,8 +5,8 @@ CFLAGS = -Wall -Wextra -Werror
 PUSH_NAME = push_swap
 BONUS_NAME = checker
 
-PUSH_DIR = push_swap_prgrm
-BONUS_DIR = checker_prgrm
+PUSH_DIR = 42_push_swap
+BONUS_DIR = 42_checker
 
 PUSH_SRC = $(wildcard $(PUSH_DIR)/*.c)
 CHECK_SRC = $(wildcard $(BONUS_DIR)/*.c)
