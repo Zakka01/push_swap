@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: zahrabar <zahrabar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/06 16:03:41 by zahrabar          #+#    #+#             */
-/*   Updated: 2026/01/17 21:53:01 by zahrabar         ###   ########.fr       */
+/*   Created: 2026/01/14 19:17:32 by zahrabar          #+#    #+#             */
+/*   Updated: 2026/01/18 00:18:18 by zahrabar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker_bonus.h"
 
 int	check_dup(t_list *a_head)
 {
