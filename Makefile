@@ -1,6 +1,6 @@
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address
 
 PUSH_NAME = push_swap
 BONUS_NAME = checker
@@ -16,9 +16,7 @@ BONUS_OBJ = $(CHECK_SRC:.c=.o)
 
 RM = rm -f
 
-all: $(PUSH_NAME) $(BONUS_NAME)
-
-push_swap: $(PUSH_NAME)
+all: $(PUSH_NAME) 
 
 bonus: $(BONUS_NAME)
 
