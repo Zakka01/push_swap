@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_sorted_bonus.c                                  :+:      :+:    :+:   */
+/*   duplicates_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zahrabar <zahrabar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/14 19:16:50 by zahrabar          #+#    #+#             */
-/*   Updated: 2026/01/27 20:43:07 by zahrabar         ###   ########.fr       */
+/*   Created: 2026/01/14 19:17:32 by zahrabar          #+#    #+#             */
+/*   Updated: 2026/01/27 20:43:00 by zahrabar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker_bonus.h"
 
-int	is_sorted(t_list **a_stack)
+int	check_dup(t_list *a_head)
 {
-	t_list	*current;
+	t_list	*this_num;
+	t_list	*next_num;
 
-	if (!a_stack || !*a_stack || !(*a_stack)->next)
-		return (1);
-	current = *a_stack;
-	while (current->next)
+	if (!a_head)
+		return (0);
+	this_num = a_head;
+	while (this_num)
 	{
-		if (current->data > current->next->data)
-			return (0);
-		current = current->next;
+		next_num = this_num->next;
+		while (next_num)
+		{
+			if (this_num->data == next_num->data)
+				return (0);
+			next_num = next_num->next;
+		}
+		this_num = this_num->next;
 	}
 	return (1);
 }

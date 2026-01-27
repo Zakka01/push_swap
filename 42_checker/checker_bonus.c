@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   checker_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zahrabar <zahrabar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 19:12:09 by zahrabar          #+#    #+#             */
-/*   Updated: 2026/01/25 19:54:15 by zahrabar         ###   ########.fr       */
+/*   Updated: 2026/01/27 20:55:30 by zahrabar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,18 @@ void	extra(t_list **a_stack, t_list **b_stack)
 			free(line);
 			free_stack(a_stack);
 			free_stack(b_stack);
-			exit(1);
+			return ;
 		}
 		apply_valid_move(line, a_stack, b_stack);
 		free(line);
 		line = get_line(0);
 	}
 	check_ok(a_stack, b_stack);
+}
+
+void ll()
+{
+	system("leaks checker");
 }
 
 int	main(int ac, char **av)
@@ -97,13 +102,14 @@ int	main(int ac, char **av)
 		while (ac > i)
 		{
 			if (!parse_create_list(av[i], &a_head))
-				return (write(2, "Error\n", 6), free_stack(&a_head), 0);
+				return (write(2, "Error\n", 6), atexit(ll), free_stack(&a_head), 0);
 			i++;
 		}
 		if (!check_dup(a_head))
-			return (write(2, "Error\n", 6), free_stack(&a_head), 0);
+			return (write(2, "Error\n", 6), atexit(ll), free_stack(&a_head), 0);
 		extra(&a_head, &b_head);
 	}
+	atexit(ll);
 	free_stack(&a_head);
 	free_stack(&b_head);
 	return (0);
